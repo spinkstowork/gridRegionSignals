@@ -5,7 +5,7 @@ Use C++ to calculate subregions from a 2D array (grid) of integers (signal stren
 
 Project developed and tested on Ubuntu 16.04 LTS linux using the Qt Creator IDE
 
-Project name: ioproj
+Project name: ioproj, over 700 lines of C++ code for 1st cut
 
 This is a project for a potential employer. The requirements are listed in a PDF
 file I received from the client. 
