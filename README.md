@@ -12,6 +12,8 @@ file I received from the client.
 
 Also see files:
 
+  - problemDescription.pdf This is the PDF that has a description of the requirements
+
   When coding these modules, I used a technique to allow some documentation to be extracted
   later by using grep. The files are a little sloppy as I havent edited the raw output,
   but the comments are there and can be read with a little effort.
