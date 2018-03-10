@@ -8,8 +8,9 @@
 template <typename T>
 const bool Contains( std::vector<T>& Vect, const T& Element )
 {
-    if (std::find(Vect.begin(), Vect.end(), Element) != Vect.end())
+    if (std::find(Vect.begin(), Vect.end(), Element) != Vect.end()) {
         return true;
+    }
 
     return false;
 }

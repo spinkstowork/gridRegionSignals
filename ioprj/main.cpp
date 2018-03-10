@@ -11,7 +11,6 @@
 // DESIGN Performance considerations are taken as a secondary concern in this implementation
 // DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridRegion, and SubRegion classes
 // DESIGN Screen memory leaks reasonably (track new operator usage), but dont go so far as to implement macros or external tools to verify 100% compliance
-// DESIGN
 
 // TESTPLAN Use a data file containing a set of integers, one per row, for the app to process
 // Very handy thing for testing
