@@ -1,0 +1,52 @@
+./ioprj/gridregion.cpp:// DESIGN GridRegion defines a region on the grid which contains location and threshold
+./ioprj/gridregion.cpp:                // REQ Only consider regions for weighting that exceed the threshold limit
+./ioprj/gridregion.cpp:    // REQ: region is considered adjacent even if its touching diagonally
+./ioprj/gridregion.cpp: * REQ Utility report method to list GridRegion properties to a stream.
+./ioprj/gridregion.cpp: * @return assume Total mass equals the signal "mass" of this region and its neighboor regions.
+./ioprj/gridregion.h:    // assume that signalStrength is always a positive integer
+./ioprj/gridregion.h:    int xCoord; // REQ Work within a 2 dimensional grid
+./ioprj/gridregion.h:    // REQ Must weight each region based on its "mass" meaning the total of regions strength and its neighboors
+./ioprj/gridregion.h:    unsigned signalStrength; // REQ refers potentially to a signal strength
+./ioprj/gridstorage.cpp:    // assume creation of a subregion only if the region is not yet part of an existing subregion
+./ioprj/gridstorage.cpp: * assume DESC sort on signal mass when listing regions within a subregion
+./ioprj/gridstorage.cpp:        // assume that if all regions exceeding threshold have equal rMass, then they are equally weighted
+./ioprj/gridstorage.cpp: * REQ Also output runtime grid dimensions, signal strength limit, region coords with the greatest mass of the subregion
+./ioprj/gridstorage.cpp: * REQ Create a subregion given a starting region.
+./ioprj/gridstorage.cpp:    // REQ Each subregions members are unique to the subregion (cant exist in 2 subregions at once)
+./ioprj/gridstorage.cpp: * REQ Find all GridRegions whose threshold value exceeds the threshold limit.
+./ioprj/gridstorage.cpp:        // REQ Only assign signal mass (weight) to those regions that exceed threshold
+./ioprj/gridstorage.cpp: * REQ Output a report showing the subregions we have discovered based on signal strength.
+./ioprj/gridstorage.cpp: * REQ Output count of runtime subregions found
+./ioprj/gridstorage.cpp:        // TESTPLAN Read the row width from the 1st line of the input data file
+./ioprj/gridstorage.cpp:        // TESTPLAN Read the signal strength limit from the 2nd line of the input data file
+./ioprj/gridstorage.cpp:        // todo: probably should verify that this GridRegion exceeds the signal limit
+./ioprj/gridstorage.cpp:        // todo: this should probably be an exception thrown
+./ioprj/gridstorage.h:    // assume signal threshold Limit is a positive integer
+./ioprj/gridstorage.h:    // REQ maintain a list of subregions that are over the max limit
+./ioprj/main.cpp:// DESIGN
+./ioprj/main.cpp:// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridRegion, and SubRegion classes
+./ioprj/main.cpp:// DESIGN Make use of the C++11 language specification
+./ioprj/main.cpp:// DESIGN Performance considerations are taken as a secondary concern in this implementation
+./ioprj/main.cpp:// DESIGN Prefer an object oriented implementation verses a straight 'C' style implementation
+./ioprj/main.cpp:// DESIGN Screen memory leaks reasonably (track new operator usage), but dont go so far as to implement macros or external tools to verify 100% compliance
+./ioprj/main.cpp:// REQ create a function, expressed either in C# or C++, that takes two inputs: two-dimensional array of values, a threshold T
+./ioprj/main.cpp:// REQ set upper signal limit for later use to determine regions of interest
+./ioprj/main.cpp:    // REQ These values taken from problem assessment dot PDF
+./ioprj/main.cpp:// REQ This determines the row width of the int's contained in the hard coded array
+./ioprj/main.cpp:// TESTPLAN I am including 3 file based data sets (8x8,10x10,100x100) in addition to the 6x6 original
+./ioprj/main.cpp:// TESTPLAN Initially, verify that the results mentioned in the requirements pdf can be duplicated
+./ioprj/main.cpp:    // TESTPLAN method processGridFromFile() can be used to drive the logic from an input file
+./ioprj/main.cpp:// TESTPLAN Use a data file containing a set of integers, one per row, for the app to process
+./ioprj/main.cpp:// todo: we may wish to calculate the square root of the number of input lines instead
+./ioprj/subregion.cpp:        return 0; // todo: should probably throw an exception here
+./ioprj/subregion.h:#include <algorithm> // todo: I think this is dup
+
+  140 ./ioprj/gridregion.cpp
+   44 ./ioprj/gridregion.h
+   17 ./ioprj/contains.h
+   55 ./ioprj/gridstorage.h
+   29 ./ioprj/subregion.h
+  102 ./ioprj/subregion.cpp
+  251 ./ioprj/gridstorage.cpp
+   83 ./ioprj/main.cpp
+  721 total
