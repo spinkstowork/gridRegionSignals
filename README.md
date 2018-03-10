@@ -22,7 +22,7 @@ Also see files:
 
 Build notes
 
-  # enable C++11 features of gcc 4.6.3
+  - enable C++11 features of gcc 4.6.3
   g++ -std=c++0x
 
   This project can be built at the command line using the linux make utility. Begin
