@@ -18,7 +18,7 @@ Also see files:
   later by using grep. The files are a little sloppy as I havent edited the raw output,
   but the comments are there and can be read with a little effort.
 
-  - commentsByModule.out Has requirements, assumptions, test plan, and todos by module. Snapshot line counts too.
+  - commentsByModule.out Has *my* additional requirements, assumptions, test plan, and todos by module. Snapshot line counts too.
   - commentsByType.out Same as above sorted by type
   - build-output Raw output from a compiler run. Useful to see compiler switches
 
