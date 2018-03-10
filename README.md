@@ -1,7 +1,7 @@
 # gridRegionSignals
 SDP Mar, 2018
 
-Use C++ to calculate subregions from a 2D array (grid) of integers
+Use C++ to calculate subregions from a 2D array (grid) of integers (signal strengths)
 
 Project developed and tested on Ubuntu 16.04 LTS linux using the Qt Creator IDE
 
