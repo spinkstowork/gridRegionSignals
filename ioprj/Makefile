@@ -49,11 +49,11 @@ OBJECTS_DIR   = ./
 ####### Files
 
 SOURCES       = main.cpp \
-		gridregion.cpp \
+		gridcell.cpp \
 		gridstorage.cpp \
 		subregion.cpp 
 OBJECTS       = main.o \
-		gridregion.o \
+		gridcell.o \
 		gridstorage.o \
 		subregion.o
 DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
@@ -111,11 +111,11 @@ DIST          = /usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/spec_pre.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/exceptions.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/yacc.prf \
 		/usr/lib/x86_64-linux-gnu/qt5/mkspecs/features/lex.prf \
-		ioprj.pro gridregion.h \
+		ioprj.pro gridcell.h \
 		gridstorage.h \
 		subregion.h \
 		contains.h main.cpp \
-		gridregion.cpp \
+		gridcell.cpp \
 		gridstorage.cpp \
 		subregion.cpp
 QMAKE_TARGET  = ioprj
@@ -258,8 +258,8 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
-	$(COPY_FILE) --parents gridregion.h gridstorage.h subregion.h contains.h $(DISTDIR)/
-	$(COPY_FILE) --parents main.cpp gridregion.cpp gridstorage.cpp subregion.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents gridcell.h gridstorage.h subregion.h contains.h $(DISTDIR)/
+	$(COPY_FILE) --parents main.cpp gridcell.cpp gridstorage.cpp subregion.cpp $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -299,22 +299,22 @@ compiler_clean:
 ####### Compile
 
 main.o: main.cpp gridstorage.h \
-		gridregion.h \
+		gridcell.h \
 		subregion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
-gridregion.o: gridregion.cpp gridregion.h \
+gridcell.o: gridcell.cpp gridcell.h \
 		gridstorage.h \
 		subregion.h
-	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gridregion.o gridregion.cpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gridcell.o gridcell.cpp
 
 gridstorage.o: gridstorage.cpp gridstorage.h \
-		gridregion.h \
+		gridcell.h \
 		subregion.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o gridstorage.o gridstorage.cpp
 
 subregion.o: subregion.cpp subregion.h \
-		gridregion.h \
+		gridcell.h \
 		contains.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o subregion.o subregion.cpp
 

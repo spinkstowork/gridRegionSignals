@@ -9,23 +9,23 @@
 #include <fstream>
 #include <vector>
 
-#include "gridregion.h"
+#include "gridcell.h"
 
 class SubRegion
 {
 
-    vector<GridRegion*> srMembers;
+    vector<GridCell*> srMembers;
 
-    bool memberExists( GridRegion *member );
+    bool memberExists( GridCell *member );
 
 public:
     SubRegion();
 
     unsigned size();
-    GridRegion* getFirst();
-    void addMember( GridRegion *member );
-    void addNeighboors( vector<GridRegion*> *vect );
-    bool regionBelongs( GridRegion *region );
+    GridCell* getFirst();
+    void addMember( GridCell *member );
+    void addNeighboors( vector<GridCell*> *vect );
+    bool regionBelongs( GridCell *region );
     void sortMembersOnSignalMass();
     void print( ostream &outputStream );
 };

@@ -1,5 +1,5 @@
-#ifndef GRIDREGION_H
-#define GRIDREGION_H
+#ifndef GRIDCELL_H
+#define GRIDCELL_H
 
 /*
  * Written By: S. D. Pinkston, Mar 2018.
@@ -12,7 +12,7 @@ using namespace std;
 
 class GridStorage; // make use of forward declaration to solve circular dependency
 
-class GridRegion
+class GridCell
 {
 
     int xCoord; // REQ Work within a 2 dimensional grid
@@ -29,8 +29,8 @@ class GridRegion
     GridStorage *storage;
 
 public:
-    GridRegion();
-    GridRegion( int x, int y, unsigned signalStrength);
+    GridCell();
+    GridCell( int x, int y, unsigned signalStrength);
 
     int getXCoord();
     int getYCoord();
@@ -42,7 +42,7 @@ public:
 
     void setStorage( GridStorage *storage );
     void print( ostream &outputStream );
-    unsigned findAdjacent( vector<GridRegion*> *vect);
+    unsigned findAdjacent( vector<GridCell*> *vect);
 };
 
-#endif // GRIDREGION_H
+#endif // GRIDCELL_H

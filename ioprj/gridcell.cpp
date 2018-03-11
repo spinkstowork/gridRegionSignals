@@ -2,16 +2,16 @@
  * Written By: S. D. Pinkston, Mar 2018.
  */
 
-#include "gridregion.h"
+#include "gridcell.h"
 #include "gridstorage.h"
 
-// DESIGN GridRegion defines a region on the grid which contains location and threshold
+// DESIGN GridCell defines a region on the grid which contains location and threshold
 
-GridRegion::GridRegion()
+GridCell::GridCell()
 {
 }
 
-GridRegion::GridRegion( int x, int y, unsigned signalStrength )
+GridCell::GridCell( int x, int y, unsigned signalStrength )
 {
    this->xCoord = x;
    this->yCoord = y;
@@ -19,52 +19,52 @@ GridRegion::GridRegion( int x, int y, unsigned signalStrength )
 
 }
 
-int GridRegion::getXCoord()
+int GridCell::getXCoord()
 {
     return this->xCoord;
 }
 
-int GridRegion::getYCoord()
+int GridCell::getYCoord()
 {
     return this->yCoord;
 }
 
-unsigned GridRegion::getSignalStrength()
+unsigned GridCell::getSignalStrength()
 {
     return this->signalStrength;
 }
 
-bool GridRegion::getExceedsLimitFlag()
+bool GridCell::getExceedsLimitFlag()
 {
     return this->exceedsLimitFlag;
 }
 
-void GridRegion::setExceedsLimitFlag( bool flag )
+void GridCell::setExceedsLimitFlag( bool flag )
 {
     this->exceedsLimitFlag = flag;
 }
 
-void GridRegion::setRMass( unsigned rMass )
+void GridCell::setRMass( unsigned rMass )
 {
     this->rMass = rMass;
 }
 
-void GridRegion::setStorage( GridStorage *storage )
+void GridCell::setStorage( GridStorage *storage )
 {
     this->storage = storage;
 }
 
-unsigned GridRegion::getRMass()
+unsigned GridCell::getRMass()
 {
     return this->rMass;
 }
 
 /**
- * REQ Utility report method to list GridRegion properties to a stream.
- * @brief GridRegion::print
+ * REQ Utility report method to list GridCell properties to a stream.
+ * @brief GridCell::print
  * @param outputStream
  */
-void GridRegion::print( ostream &outputStream )
+void GridCell::print( ostream &outputStream )
 {
     outputStream << this->xCoord << ",";
     outputStream << this->yCoord << ", T=";
@@ -85,11 +85,11 @@ void GridRegion::print( ostream &outputStream )
 /**
  * Using our reference to the master grid storage, find which regions are adjacent.
  * (i.e. neighboors)
- * @brief GridRegion::findAdjacent
+ * @brief GridCell::findAdjacent
  * @param vect
  * @return assume Total mass equals the signal "mass" of this region and its neighboor regions.
  */
-unsigned GridRegion::findAdjacent( vector<GridRegion*> *vect )
+unsigned GridCell::findAdjacent( vector<GridCell*> *vect )
 {
     // REQ: region is considered adjacent even if its touching diagonally
     int hRange = 3, vRange = 3;
@@ -128,7 +128,7 @@ unsigned GridRegion::findAdjacent( vector<GridRegion*> *vect )
             // We cant be a neighboor of ourselves
             if( !((this->xCoord) == (xCoord+x) && (this->yCoord) == (yCoord+y)) ) {
                 // cout << (xCoord+x) << ", " << (yCoord+y) << endl;
-                GridRegion *tgr = this->storage->getRegion( xCoord+x, yCoord+y );
+                GridCell *tgr = this->storage->getRegion( xCoord+x, yCoord+y );
                 vect->push_back( tgr );
 
                 // REQ Only consider regions for weighting that exceed the threshold limit

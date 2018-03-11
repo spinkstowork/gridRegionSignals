@@ -17,7 +17,7 @@ unsigned SubRegion::size()
     return srMembers.size();
 }
 
-GridRegion* SubRegion::getFirst()
+GridCell* SubRegion::getFirst()
 {
     if( srMembers.size() > 0 ) {
         return srMembers[0];
@@ -32,7 +32,7 @@ GridRegion* SubRegion::getFirst()
  * @brief SubRegion::addMember
  * @param member
  */
-void SubRegion::addMember( GridRegion *member )
+void SubRegion::addMember( GridCell *member )
 {
     // dont add a member more than once
     if( !Contains( srMembers, member ) ) {
@@ -45,16 +45,16 @@ void SubRegion::addMember( GridRegion *member )
  * @brief SubRegion::addNeighboors
  * @param vect
  */
-void SubRegion::addNeighboors( vector<GridRegion*> *vect )
+void SubRegion::addNeighboors( vector<GridCell*> *vect )
 {
-    vector<GridRegion*>::const_iterator i;
+    vector<GridCell*>::const_iterator i;
 
     for( i=vect->begin(); i != vect->end(); i++ ) {
-        GridRegion *tgr = *i;
+        GridCell *tgr = *i;
 
         if( (tgr->getExceedsLimitFlag() == true) && !Contains( srMembers, tgr ) ) {
             this->addMember( tgr );
-            vector<GridRegion*> neighboors;
+            vector<GridCell*> neighboors;
             unsigned tmpMass = tgr->findAdjacent( &neighboors );
 
             tgr->setRMass( tmpMass );
@@ -70,13 +70,13 @@ void SubRegion::addNeighboors( vector<GridRegion*> *vect )
  * @param region
  * @return
  */
-bool SubRegion::regionBelongs( GridRegion *region )
+bool SubRegion::regionBelongs( GridCell *region )
 {
     return Contains( srMembers, region );
 }
 
 // implements a DESCENDING sort
-bool sortByRMass( GridRegion *a, GridRegion *b )
+bool sortByRMass( GridCell *a, GridCell *b )
 {
     return a->getRMass() > b->getRMass();
 }
@@ -99,7 +99,7 @@ void SubRegion::sortMembersOnSignalMass()
  */
 void SubRegion::print( ostream &outputStream )
 {
-    for( GridRegion *reg : srMembers ) {
+    for( GridCell *reg : srMembers ) {
         outputStream << "        ";
         reg->print( outputStream );
     }

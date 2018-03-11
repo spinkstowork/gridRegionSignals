@@ -13,14 +13,14 @@
 // DESIGN Prefer an object oriented implementation verses a straight 'C' style implementation
 // DESIGN Make use of the C++11 language specification
 // DESIGN Performance considerations are taken as a secondary concern in this implementation
-// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridRegion, and SubRegion classes
+// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridCell, and SubRegion classes
 // DESIGN Screen memory leaks reasonably (track new operator usage), but dont go so far as to implement macros or external tools to verify 100% compliance
 
 // TESTPLAN Use a data file containing a set of integers, one per row, for the app to process
 // Very handy thing for testing
 
 // TESTPLAN I am including 3 file based data sets (8x8,10x10,100x100) in addition to the 6x6 original
-#define DATA_FILENAME "sd6-6.dat"
+#define DATA_FILENAME "../sd6-6.dat"
 
 // Amount of lines allocated during initial file read
 #define PREALLOC_LINES 100

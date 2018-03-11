@@ -10,7 +10,7 @@
 
 using namespace std;
 
-#include "gridregion.h"
+#include "gridcell.h"
 #include "subregion.h"
 
 // Data file contents are incorrect
@@ -23,7 +23,7 @@ class GridStorage
 
     // defines a 2 dimensional "map" or grid, in which our regions are located
     // operating grid
-    vector<GridRegion*> opGrid;
+    vector<GridCell*> opGrid;
 
     // REQ maintain a list of subregions that are over the max limit
     vector<SubRegion*> opSubRegions;
@@ -31,11 +31,11 @@ class GridStorage
     // assume signal threshold Limit is a positive integer
     unsigned thresholdLimit = 0;
 
-    bool findInAnySubRegion( GridRegion *region );
+    bool findInAnySubRegion( GridCell *region );
 
     // define private methods
-    void findAllOverLimit( vector<GridRegion*> *vect);
-    void createSubRegion( GridRegion *init );
+    void findAllOverLimit( vector<GridCell*> *vect);
+    void createSubRegion( GridCell *init );
 
 public:
     GridStorage();
@@ -44,7 +44,7 @@ public:
     int size();
     int getWidth();
     void setWidth( int width );
-    GridRegion* getRegion( int x, int y );
+    GridCell* getRegion( int x, int y );
 
     // Row width is now the first line of the input file
     int readFromFile( string filename, int preAllocLines );

@@ -111,7 +111,7 @@ int GridStorage::readFromFile( string filename, int preAllocLines )
  */
 void GridStorage::addGridRegion( int x, int y, unsigned signalStrength )
 {
-    GridRegion *tgr = new GridRegion( x, y, signalStrength );
+    GridCell *tgr = new GridCell( x, y, signalStrength );
     tgr->setStorage( this );
     tgr->setExceedsLimitFlag( (signalStrength > this->thresholdLimit) ? true : false );
     opGrid.push_back( tgr );
@@ -124,7 +124,7 @@ void GridStorage::addGridRegion( int x, int y, unsigned signalStrength )
  * @param y these inputs are 0 based coordinates
  * @return
  */
-GridRegion* GridStorage::getRegion( int x, int y )
+GridCell* GridStorage::getRegion( int x, int y )
 {
     unsigned idx = x + (y * this->width );
 
@@ -143,7 +143,7 @@ GridRegion* GridStorage::getRegion( int x, int y )
  * @brief GridStorage::findAllOverLimit
  * @param vect
  */
-void GridStorage::findAllOverLimit( vector<GridRegion*> *vect )
+void GridStorage::findAllOverLimit( vector<GridCell*> *vect )
 {
     for( unsigned z = 0; z < opGrid.size(); z++ ) {
         if( opGrid[z]->getExceedsLimitFlag() == true ) {
@@ -158,7 +158,7 @@ void GridStorage::findAllOverLimit( vector<GridRegion*> *vect )
  * @param region
  * @return
  */
-bool GridStorage::findInAnySubRegion( GridRegion *region )
+bool GridStorage::findInAnySubRegion( GridCell *region )
 {
     for( unsigned z = 0; z < opSubRegions.size(); z++ ) {
         SubRegion *tsub = opSubRegions[z];
@@ -171,14 +171,14 @@ bool GridStorage::findInAnySubRegion( GridRegion *region )
 
 void GridStorage::calculateFindings()
 {
-    vector<GridRegion*> overLimit;
+    vector<GridCell*> overLimit;
 
     findAllOverLimit( &overLimit );
 
-    vector<GridRegion*>::const_iterator i;
+    vector<GridCell*>::const_iterator i;
 
     for( i=overLimit.begin(); i != overLimit.end(); i++ ) {
-        GridRegion *tgr = *i;
+        GridCell *tgr = *i;
         createSubRegion( tgr );
     }
 }
@@ -188,17 +188,17 @@ void GridStorage::calculateFindings()
  * @brief GridStorage::createSubRegion
  * @param init
  */
-void GridStorage::createSubRegion( GridRegion *init )
+void GridStorage::createSubRegion( GridCell *init )
 {
     // assume creation of a subregion only if the region is not yet part of an existing subregion
     // REQ Each subregions members are unique to the subregion (cant exist in 2 subregions at once)
     if( !findInAnySubRegion( init ) ) {
-        // todo: probably should verify that this GridRegion exceeds the signal limit
+        // todo: probably should verify that this GridCell exceeds the signal limit
         SubRegion *sreg = new SubRegion();
         sreg->addMember( init );
         opSubRegions.push_back( sreg );
 
-        vector<GridRegion*> neighboors;
+        vector<GridCell*> neighboors;
         unsigned tmpMass = init->findAdjacent( &neighboors );
 
         // REQ Only assign signal mass (weight) to those regions that exceed threshold
