@@ -1,6 +1,6 @@
                 // REQ Only consider regions for weighting that exceed the threshold limit
     // REQ: region is considered adjacent even if its touching diagonally
- * REQ Utility report method to list GridRegion properties to a stream.
+ * REQ Utility report method to list GridCell properties to a stream.
     int xCoord; // REQ Work within a 2 dimensional grid
     // REQ Must weight each region based on its "mass" meaning the total of regions strength and its neighboors
     unsigned signalStrength; // REQ refers potentially to a signal strength
@@ -17,6 +17,7 @@
     // REQ These values taken from problem assessment dot PDF
 // REQ This determines the row width of the int's contained in the hard coded array
 
+
  * @return assume Total mass equals the signal "mass" of this region and its neighboor regions.
     // assume that signalStrength is always a positive integer
     // assume creation of a subregion only if the region is not yet part of an existing subregion
@@ -24,12 +25,14 @@
         // assume that if all regions exceeding threshold have equal rMass, then they are equally weighted
     // assume signal threshold Limit is a positive integer
 
-// DESIGN GridRegion defines a region on the grid which contains location and threshold
-// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridRegion, and SubRegion classes
+
+// DESIGN GridCell defines a region on the grid which contains location and threshold
+// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridCell, and SubRegion classes
 // DESIGN Make use of the C++11 language specification
 // DESIGN Performance considerations are taken as a secondary concern in this implementation
 // DESIGN Prefer an object oriented implementation verses a straight 'C' style implementation
 // DESIGN Screen memory leaks reasonably (track new operator usage), but dont go so far as to implement macros or external tools to verify 100% compliance
+
 
         // TESTPLAN Read the row width from the 1st line of the input data file
         // TESTPLAN Read the signal strength limit from the 2nd line of the input data file
@@ -38,7 +41,8 @@
     // TESTPLAN method processGridFromFile() can be used to drive the logic from an input file
 // TESTPLAN Use a data file containing a set of integers, one per row, for the app to process
 
-        // todo: probably should verify that this GridRegion exceeds the signal limit
+
+        // todo: probably should verify that this GridCell exceeds the signal limit
         // todo: this should probably be an exception thrown
 // todo: we may wish to calculate the square root of the number of input lines instead
         return 0; // todo: should probably throw an exception here

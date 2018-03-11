@@ -1,12 +1,12 @@
-./ioprj/gridregion.cpp:// DESIGN GridRegion defines a region on the grid which contains location and threshold
-./ioprj/gridregion.cpp:                // REQ Only consider regions for weighting that exceed the threshold limit
-./ioprj/gridregion.cpp:    // REQ: region is considered adjacent even if its touching diagonally
-./ioprj/gridregion.cpp: * REQ Utility report method to list GridRegion properties to a stream.
-./ioprj/gridregion.cpp: * @return assume Total mass equals the signal "mass" of this region and its neighboor regions.
-./ioprj/gridregion.h:    // assume that signalStrength is always a positive integer
-./ioprj/gridregion.h:    int xCoord; // REQ Work within a 2 dimensional grid
-./ioprj/gridregion.h:    // REQ Must weight each region based on its "mass" meaning the total of regions strength and its neighboors
-./ioprj/gridregion.h:    unsigned signalStrength; // REQ refers potentially to a signal strength
+./ioprj/gridcell.cpp:// DESIGN GridCell defines a region on the grid which contains location and threshold
+./ioprj/gridcell.cpp:                // REQ Only consider regions for weighting that exceed the threshold limit
+./ioprj/gridcell.cpp:    // REQ: region is considered adjacent even if its touching diagonally
+./ioprj/gridcell.cpp: * REQ Utility report method to list GridCell properties to a stream.
+./ioprj/gridcell.cpp: * @return assume Total mass equals the signal "mass" of this region and its neighboor regions.
+./ioprj/gridcell.h:    // assume that signalStrength is always a positive integer
+./ioprj/gridcell.h:    int xCoord; // REQ Work within a 2 dimensional grid
+./ioprj/gridcell.h:    // REQ Must weight each region based on its "mass" meaning the total of regions strength and its neighboors
+./ioprj/gridcell.h:    unsigned signalStrength; // REQ refers potentially to a signal strength
 ./ioprj/gridstorage.cpp:    // assume creation of a subregion only if the region is not yet part of an existing subregion
 ./ioprj/gridstorage.cpp: * assume DESC sort on signal mass when listing regions within a subregion
 ./ioprj/gridstorage.cpp:        // assume that if all regions exceeding threshold have equal rMass, then they are equally weighted
@@ -19,12 +19,11 @@
 ./ioprj/gridstorage.cpp: * REQ Output count of runtime subregions found
 ./ioprj/gridstorage.cpp:        // TESTPLAN Read the row width from the 1st line of the input data file
 ./ioprj/gridstorage.cpp:        // TESTPLAN Read the signal strength limit from the 2nd line of the input data file
-./ioprj/gridstorage.cpp:        // todo: probably should verify that this GridRegion exceeds the signal limit
+./ioprj/gridstorage.cpp:        // todo: probably should verify that this GridCell exceeds the signal limit
 ./ioprj/gridstorage.cpp:        // todo: this should probably be an exception thrown
 ./ioprj/gridstorage.h:    // assume signal threshold Limit is a positive integer
 ./ioprj/gridstorage.h:    // REQ maintain a list of subregions that are over the max limit
-./ioprj/main.cpp:// DESIGN
-./ioprj/main.cpp:// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridRegion, and SubRegion classes
+./ioprj/main.cpp:// DESIGN Demonstrate separation of concerns (encapsulation) via the organization of behavior into the GridStorage, GridCell, and SubRegion classes
 ./ioprj/main.cpp:// DESIGN Make use of the C++11 language specification
 ./ioprj/main.cpp:// DESIGN Performance considerations are taken as a secondary concern in this implementation
 ./ioprj/main.cpp:// DESIGN Prefer an object oriented implementation verses a straight 'C' style implementation
@@ -41,12 +40,12 @@
 ./ioprj/subregion.cpp:        return 0; // todo: should probably throw an exception here
 ./ioprj/subregion.h:#include <algorithm> // todo: I think this is dup
 
-  140 ./ioprj/gridregion.cpp
-   44 ./ioprj/gridregion.h
-   17 ./ioprj/contains.h
-   55 ./ioprj/gridstorage.h
-   29 ./ioprj/subregion.h
-  102 ./ioprj/subregion.cpp
-  251 ./ioprj/gridstorage.cpp
-   83 ./ioprj/main.cpp
-  721 total
+  142 ./ioprj/gridcell.cpp
+   22 ./ioprj/contains.h
+   61 ./ioprj/gridstorage.h
+   33 ./ioprj/subregion.h
+  106 ./ioprj/subregion.cpp
+   48 ./ioprj/gridcell.h
+  255 ./ioprj/gridstorage.cpp
+   86 ./ioprj/main.cpp
+  753 total
