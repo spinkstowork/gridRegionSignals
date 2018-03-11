@@ -1,7 +1,9 @@
+/*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
 
 #include "gridregion.h"
 #include "gridstorage.h"
-
 
 // DESIGN GridRegion defines a region on the grid which contains location and threshold
 

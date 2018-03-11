@@ -1,6 +1,10 @@
 #ifndef GRIDSTORAGE_H
 #define GRIDSTORAGE_H
 
+/*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
+
 #include <vector>
 #include <fstream>
 
@@ -47,6 +51,8 @@ public:
 
     void calculateFindings();
     void showResults( ostream &outputStream );
+
+    // This method used when loading from hard coded 2D array
     void addGridRegion( int x, int y, unsigned signalStrength );
 
     ~GridStorage();

@@ -2,6 +2,10 @@
 #define CONTAINS_H
 
 /*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
+
+/*
  * Usage: bool flag = Contains( v1, e1 );
  * Where: v1 is a vector in which element pointer e1 might exist.
  * */

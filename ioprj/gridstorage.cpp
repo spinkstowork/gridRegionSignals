@@ -1,3 +1,7 @@
+/*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
+
 #include <string>
 
 #include "gridstorage.h"

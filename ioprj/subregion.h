@@ -1,6 +1,10 @@
 #ifndef SUBREGION_H
 #define SUBREGION_H
 
+/*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
+
 #include <algorithm> // todo: I think this is dup
 #include <fstream>
 #include <vector>

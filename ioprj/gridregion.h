@@ -1,6 +1,10 @@
 #ifndef GRIDREGION_H
 #define GRIDREGION_H
 
+/*
+ * Written By: S. D. Pinkston, Mar 2018.
+ */
+
 #include <iostream>
 #include <vector>
 
