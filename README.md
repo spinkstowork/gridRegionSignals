@@ -32,6 +32,10 @@ Build notes
   files, which might be overkill, but I wish anyone to be able so use make to build
   from the command line.
 
+  Using make does require installation of QT. So, there is a quick and dirty build
+  script, quickBuild.sh, in the ioproj directory. It contains the compile and link
+  steps, short and sweet, to generate the ioproj executable using g++.
+
 Testing
 
   - I made heavy use of data files. See the dot dat files in top directory.
