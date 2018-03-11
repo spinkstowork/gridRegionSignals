@@ -32,5 +32,19 @@ Build notes
   files, which might be overkill, but I wish anyone to be able so use make to build
   from the command line.
 
+Testing
+
+  - I made heavy use of data files. See the dot dat files in top directory.
+  - Data file format: text file length = (width of grid * 2) + 2
+    so given an 8x8 grid:
+
+  8 // first line - grid width
+  200 // 2nd line here. Signal strength limit
+  XXX // 3rd line here. First integer, x,y coords = 0,0
+  XXX // 4th line here. Second integer, x,y coords = 1,0
+  ...
+
+  66 lines of text in all for a 8x8 grid
+
 Thanks!
 
